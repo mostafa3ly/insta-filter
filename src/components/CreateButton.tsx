@@ -31,13 +31,13 @@ const CreateButton: FC<Props> = ({ onSelectImage }) => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
 
   const handleClick = (): void => {
-    if(!hiddenFileInput.current) return;
+    if (!hiddenFileInput.current) return;
     hiddenFileInput.current.click();
   };
 
   const handleChangeFile = (e: ChangeEvent<HTMLInputElement>): void => {
     const image = e.target.files?.[0];
-    if(!image) return;
+    if (!image) return;
     onSelectImage(image);
   };
 
@@ -45,6 +45,7 @@ const CreateButton: FC<Props> = ({ onSelectImage }) => {
     <>
       <StyledCreateButton onClick={handleClick}>Create</StyledCreateButton>
       <input
+        id="image-input"
         type="file"
         ref={hiddenFileInput}
         onChange={handleChangeFile}
