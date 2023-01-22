@@ -7,6 +7,7 @@ interface Props extends PropsWithChildren {
 const StyledDialogContent = styled.div`
   height: 100%;
   width: 100%;
+  position: relative;
 `;
 
 const DialogContent: FC<Props> = ({ children }) => {

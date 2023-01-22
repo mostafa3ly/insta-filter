@@ -29,7 +29,7 @@ function App() {
     <div className="App">
       <CreateButton onSelectImage={handleSelectImage} />
       <PreviewDialog
-        image={imageSrc}
+        imgSrc={imageSrc}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
       />
