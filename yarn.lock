@@ -4466,7 +4466,7 @@
     "utils-merge" "1.0.1"
     "vary" "~1.1.2"
 
-"fabric@^5.2.1":
+"fabric@^5.3.0":
   "integrity" "sha512-AVayKuzWoXM5cTn7iD3yNWBlfEa8r1tHaOe2g8NsZrmWKAHjryTxT/j6f9ncRfOWOF0I1Ci1AId3y78cC+GExQ=="
   "resolved" "https://registry.npmjs.org/fabric/-/fabric-5.3.0.tgz"
   "version" "5.3.0"
