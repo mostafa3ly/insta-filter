@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { ChangeEvent, FC, useEffect, useRef, useState } from "react";
 import Dialog from "./Dialog";
 import DialogContent from "./DialogContent";
 import DialogHead from "./DialogHead";
@@ -15,6 +15,7 @@ interface Props {
 const PreviewDialog: FC<Props> = ({ imgSrc, isOpen, onClose }) => {
   const canvasEl = useRef<HTMLCanvasElement>(null);
   const [activeFilter, setActiveFilter] = useState("None");
+  const [format, setFormat] = useState("jpeg");
   const [canvas, setCanvas] = useState<fabric.Canvas>();
   const [value, setValue] = useState(0);
 
@@ -22,6 +23,7 @@ const PreviewDialog: FC<Props> = ({ imgSrc, isOpen, onClose }) => {
     if (!isOpen) {
       setActiveFilter("None");
       setValue(0);
+      setFormat("jpeg")
     }
   }, [isOpen]);
 
@@ -81,9 +83,31 @@ const PreviewDialog: FC<Props> = ({ imgSrc, isOpen, onClose }) => {
     setCanvas(canvas);
   };
 
+  const handleDownload = (): void => {
+    const href = canvas!.toDataURL({
+      format,
+      quality: 0.8,
+    });
+    var link = document.createElement("a");
+    link.href = href;
+    link.download = `${activeFilter}.${format}`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleChangeImageFormat = (e: ChangeEvent<HTMLSelectElement>): void => {
+    setFormat(e.target.value);
+  };
+console.log(format);
+
   return (
     <Dialog isOpen={isOpen} onClose={onClose}>
-      <DialogHead title="Create new post" />
+      <DialogHead
+        title="Create new post"
+        onDownload={handleDownload}
+        onChangeImageType={handleChangeImageFormat}
+      />
       <DialogContent>
         <canvas
           width={CANVAS_DIMENSIONS}
