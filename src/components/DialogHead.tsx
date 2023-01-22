@@ -6,7 +6,7 @@ interface Props {
 }
 
 const StyledDialogHead = styled.div`
-  height: 45px;
+  height: 42px;
   display: flex;
   align-items: center;
   background: white;
